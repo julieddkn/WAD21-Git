@@ -1,5 +1,7 @@
 <?php
 
+include_once "./Sondage.class.php";
+
 class SondageManager{
     
     public PDO $bdd;
