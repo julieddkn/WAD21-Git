@@ -10,7 +10,6 @@ public function __construct(PDO $objetBD)
 }
 
 //INSERT 
-//INSERT INTO `intitule` (`id`, `intitule`, `type`) VALUES (NULL, 'nomSondage', current_timestamp());
 public function insert(Sondage $unSondage):void
 {
     $sql = "INSERT INTO sondage (intitule, type, reponse) VALUES (:intitule, :type, :reponse)";

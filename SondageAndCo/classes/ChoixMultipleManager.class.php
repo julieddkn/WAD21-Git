@@ -1,6 +1,6 @@
 <?php
 
-class Sondage{
+class ChoixMultipleManager{
     
     public PDO $bdd;
 
@@ -10,25 +10,23 @@ public function __construct(PDO $objetBD)
 }
 
 //INSERT 
-//INSERT INTO `intitule` (`id`, `intitule`, `type`) VALUES (NULL, 'nomSondage', current_timestamp());
-public function insert(Sondage $unSondage):void
+public function insert(ChoixMultiple $unChoix):void
 {
-    $sql = "INSERT INTO sondage (intitule, type, reponse) VALUES (:intitule, :type, :reponse)";
+    $sql = "INSERT INTO choixmultiples (proposedanswers, id_question) VALUES (:proposedanswers, :type, :id_question)";
     $requete = $this->bdd->prepare($sql);
-    $requete->bindValue(":intitule",$unSondage->intitule);
-    $requete->bindValue(":type",$unSondage->type);
-    $requete->bindValue(":reponse",$unSondage->reponse);
+    $requete->bindValue(":type",$unChoix->proposedanswers);
+    $requete->bindValue(":intitule",$unChoix->id_question);
     $requete->execute();
     // var_dump($requete->errorInfo());
     // die();
-    $unSondage->hydrate(['id'=>$this->bdd->lastInsertId()]);
+    $unChoix->hydrate(['id'=>$this->bdd->lastInsertId()]);
 }
 
-public function delete(Sondage $unSondage)
+public function delete(ChoixMultiple $unChoix)
     {
-        $sql = "DELETE FROM sondage WHERE id=:id";
+        $sql = "DELETE FROM choixmultiples WHERE id=:id";
         $requete = $this->bdd->prepare($sql);
-        $requete->bindValue(":id", $unSondage->getId());
+        $requete->bindValue(":id", $unChoix->getId());
         $requete->execute();
         var_dump($requete->errorInfo());
         var_dump($this->bdd->errorInfo());
@@ -36,7 +34,7 @@ public function delete(Sondage $unSondage)
 
 public function select(array $filtres = []): array
     {
-        $sql = "SELECT * FROM sondage";
+        $sql = "SELECT * FROM choixmultiples";
         // SELECT * from intitule WHERE intitule=:intitule AND type=:type
         if (count($filtres) > 0) {
             $sql = $sql . " WHERE ";
@@ -61,24 +59,24 @@ public function select(array $filtres = []): array
 
         $arrayObjetsSondage = [];
         foreach ($res as $unSondageArray) {
-            $arrayObjetsSondage[] = new Sondage($unSondageArray);
+            $arrayObjetsSondage[] = new ChoixMultiple($unSondageArray);
         }
         return $arrayObjetsSondage;
     }
 
-    public function selectParId(int $id): Sondage
+    public function selectParId(int $id): ChoixMultiple
     {
-        $sql = "SELECT * FROM sondage WHERE id=:id";
+        $sql = "SELECT * FROM choixmultiples WHERE id=:id";
         $requete = $this->bdd->prepare($sql);
         $requete->bindValue(":id",$id);
         $requete->execute();
         $arrayUnSondage = $requete->fetch(PDO::FETCH_ASSOC); // une seule ligne, un seul array
-        return new Sondage($arrayUnSondage);
+        return new ChoixMultiple($arrayUnSondage);
         
     }
     
-    public function update (Sondage $unSondage) : void {
-        $sql = "UPDATE sondage SET intitule = :intitule, 
+    public function update (ChoixMultiple $unSondage) : void {
+        $sql = "UPDATE choixmultiples SET intitule = :intitule, 
                                 type = :type,
                                 reponse = :reponse
                 WHERE id=:id";

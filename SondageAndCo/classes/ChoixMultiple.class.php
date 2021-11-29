@@ -3,8 +3,8 @@
 class ChoixMultiple {
 
     public int $id;
-    public string $propositionReponse;
-    public int $id_question;
+    public string $proposedanswers;
+    public int $idQuestions;
 
     public function __construct(array $vals)
     {
@@ -27,7 +27,6 @@ class ChoixMultiple {
     {
         return $this->id;
     }
-
     /**
      * Set the value of id
      *
@@ -45,17 +44,16 @@ class ChoixMultiple {
      */ 
     public function getPropositionReponse()
     {
-        return $this->propositionReponse;
+        return $this->proposedanswers;
     }
-
     /**
      * Set the value of intitule
      *
      * @return  self
      */ 
-    public function setPropositionReponse($propositionReponse)
+    public function setPropositionReponse($proposedanswers)
     {
-        $this->propositionReponse = $propositionReponse;
+        $this->proposedanswers = $proposedanswers;
 
         return $this;
     }
@@ -65,16 +63,16 @@ class ChoixMultiple {
      */ 
     public function getId_question()
     {
-        return $this->id_question;
+        return $this->idQuestions;
     }
     /**
      * Set the value of reponse
      *
      * @return  self
      */ 
-    public function setId_question($id_question)
+    public function setId_question($idQuestions)
     {
-        $this->id_question = $id_question;
+        $this->idQuestions = $idQuestions;
         return $this;
     }
 }
