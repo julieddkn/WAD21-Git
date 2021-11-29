@@ -1,6 +1,6 @@
 <?php
 
-class SondageManager{
+class Sondage{
     
     public PDO $bdd;
 
