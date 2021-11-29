@@ -14,8 +14,8 @@ public function insert(ChoixMultiple $unChoix):void
 {
     $sql = "INSERT INTO choixmultiples (proposedanswers, id_question) VALUES (:proposedanswers, :type, :id_question)";
     $requete = $this->bdd->prepare($sql);
-    $requete->bindValue(":type",$unChoix->proposedanswers);
-    $requete->bindValue(":intitule",$unChoix->id_question);
+    $requete->bindValue(":proposedanswers",$unChoix->proposedanswers);
+    $requete->bindValue(":id_question",$unChoix->id_question);
     $requete->execute();
     // var_dump($requete->errorInfo());
     // die();
@@ -57,11 +57,11 @@ public function select(array $filtres = []): array
 
         $res = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-        $arrayObjetsSondage = [];
-        foreach ($res as $unSondageArray) {
-            $arrayObjetsSondage[] = new ChoixMultiple($unSondageArray);
+        $arrayObjetsChoix = [];
+        foreach ($res as $unChoixArray) {
+            $arrayObjetsSondage[] = new ChoixMultiple($unChoixArray);
         }
-        return $arrayObjetsSondage;
+        return $arrayObjetsChoix;
     }
 
     public function selectParId(int $id): ChoixMultiple
@@ -70,21 +70,20 @@ public function select(array $filtres = []): array
         $requete = $this->bdd->prepare($sql);
         $requete->bindValue(":id",$id);
         $requete->execute();
-        $arrayUnSondage = $requete->fetch(PDO::FETCH_ASSOC); // une seule ligne, un seul array
-        return new ChoixMultiple($arrayUnSondage);
+        $arrayUnChoix = $requete->fetch(PDO::FETCH_ASSOC); // une seule ligne, un seul array
+        return new ChoixMultiple($arrayUnChoix);
         
     }
     
-    public function update (ChoixMultiple $unSondage) : void {
+    public function update (ChoixMultiple $unChoix) : void {
         $sql = "UPDATE choixmultiples SET intitule = :intitule, 
                                 type = :type,
                                 reponse = :reponse
                 WHERE id=:id";
         $requete = $this->bdd->prepare($sql);
-        $requete->bindValue(":id", $unSondage->getId());
-        $requete->bindValue(":intitule",$unSondage->getIntitule()); 
-        $requete->bindValue(":type",$unSondage->getType());
-        $requete->bindValue(":reponse",$unSondage->getReponse());
+        $requete->bindValue(":id", $unChoix->getId());
+        $requete->bindValue(":proposedanswers",$unChoix->getProposedanswers()); 
+        $requete->bindValue(":idQuestions",$unChoix->getIdQuestions());
         $requete->execute();
         
     }

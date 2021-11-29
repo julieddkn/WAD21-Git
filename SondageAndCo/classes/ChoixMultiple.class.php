@@ -42,7 +42,7 @@ class ChoixMultiple {
     /**
      * Get the value of intitule
      */ 
-    public function getPropositionReponse()
+    public function getProposedanswers()
     {
         return $this->proposedanswers;
     }
@@ -51,7 +51,7 @@ class ChoixMultiple {
      *
      * @return  self
      */ 
-    public function setPropositionReponse($proposedanswers)
+    public function setProposedanswers($proposedanswers)
     {
         $this->proposedanswers = $proposedanswers;
 
@@ -61,7 +61,7 @@ class ChoixMultiple {
     /**
      * Get the value of reponse
      */ 
-    public function getId_question()
+    public function getIdQuestions()
     {
         return $this->idQuestions;
     }
@@ -70,7 +70,7 @@ class ChoixMultiple {
      *
      * @return  self
      */ 
-    public function setId_question($idQuestions)
+    public function setIdQuestions($idQuestions)
     {
         $this->idQuestions = $idQuestions;
         return $this;
