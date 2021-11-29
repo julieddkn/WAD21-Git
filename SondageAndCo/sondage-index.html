@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Sondage & Co - Créer votre sondage !</title>
 </head>
 <body>
@@ -11,13 +12,13 @@
         Sondage & CO
     </div>
     <div>
-        <form action="sondage-traitement.php" method="POST">
-            <label for="">Nom de votre entreprise :</label>
-            <input type="text">
-            <label for="">Votre Email :</label>
-            <input type="email">
-            <label for="">Votre logo :</label>
-            <input type="file">
+        <form action="traitementSondage.php" method="POST" enctype="multipart/form-data">
+            <label for="entreprise">Nom de votre entreprise :</label>
+            <input type="text" id="entreprise" name="entreprise">
+            <label for="email">Votre Email :</label>
+            <input type="email" id="email" name="email">
+            <label for="logo">Votre logo :</label>
+            <input type="file" id="logo" name="logo">
             <input type="submit">
         </form>
         <button>Ajouter une question ouverte</button>
