@@ -1,0 +1,22 @@
+Projet de gestion de données
+----------------------------
+
+Jour 1 (6 décembre)
+
+	- Mise en place de la base de données se basant sur les diagrammes et shéma du projet World of War
+
+		Nom de la db : Wow
+
+Jour 2 (7 décembre)
+
+	- Mise en place de la couche d'accès aux données grâce à ADO, dans un projet console
+
+Jour 3 (16 Décembre)
+
+	- Préparation de l'affichage des données en console
+		+ Choix de l'utilisateur proposé (choix personnage)
+		+ Affichage du résultat des combat et du tournoi
+
+Jour 4 (23 Décembre)
+
+	- Mise en place d'une interface ASP reprenant les mêmes informations que le projet console 
