@@ -20,7 +20,10 @@
         }  
 
         $newEntreprise = $_POST["entreprise"];
-        $Manager = new SondageManager();
+        $Manager = new SondageManager($bdd);
+        //$Manager->insert();
+
+        //$Manager->select();
 
         //var_dump($_POST);
         //echo $_POST["entreprise"];
