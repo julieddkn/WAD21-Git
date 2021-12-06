@@ -8,9 +8,10 @@
 </head>
 <body>
     <?php
-        include_once "./config/db.php";
-        include_once "./classes/Sondage.class.php";
-        include_once "./classes/SondageManager.class.php";
+        // include_once "./config/db.php";
+        // include_once "./classes/Sondage.class.php";
+        // include_once "./classes/SondageManager.class.php";
+        include "./vendor/autoload.php";
 
         try {
             $bdd = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset='. DBCHARSET, DBUSER, DBPASS);
